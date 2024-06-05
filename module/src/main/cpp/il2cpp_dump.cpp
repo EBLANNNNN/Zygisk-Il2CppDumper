@@ -100,11 +100,11 @@ std::string dump_method(Il2CppClass *klass) {
         //TODO attribute
         if (method->methodPointer) {
             outPut << "\t// RVA: 0x";
-            outPut << std::hex << (uint64_t) method->methodPointer - il2cpp_base;
+            outPut << std::uppercase << std::hex << (uint64_t) method->methodPointer - il2cpp_base;
             outPut << " VA: 0x";
-            outPut << std::hex << (uint64_t) method->methodPointer;
+            outPut << std::uppercase << std::hex << (uint64_t) method->methodPointer;
         } else {
-            outPut << "\t// RVA: 0x VA: 0x0";
+            outPut << "\t// RVA: -1 VA: -1";
         }
         /*if (method->slot != 65535) {
             outPut << " Slot: " << std::dec << method->slot;
@@ -241,7 +241,7 @@ std::string dump_field(Il2CppClass *klass) {
             il2cpp_field_static_get_value(field, &val);
             outPut << " = " << std::dec << val;
         }
-        outPut << "; // 0x" << std::hex << il2cpp_field_get_offset(field) << "\n";
+        outPut << "; // 0x" << std::uppercase << std::hex << il2cpp_field_get_offset(field) << "\n";
     }
     return outPut.str();
 }
@@ -417,7 +417,7 @@ void il2cpp_dump(const char *outDir) {
         }
     }
     LOGI("write dump file");
-    auto outPath = std::string(outDir).append("/files/dump.cs");
+    auto outPath = std::string(outDir).append("/files/EpilogDump.cs");
     std::ofstream outStream(outPath);
     outStream << imageOutput.str();
     auto count = outPuts.size();

@@ -99,12 +99,12 @@ std::string dump_method(Il2CppClass *klass) {
     while (auto method = il2cpp_class_get_methods(klass, &iter)) {
         //TODO attribute
         if (method->methodPointer) {
-            outPut << "\t// RVA: 0x";
+            outPut << "\n\t// RVA: 0x";
             outPut << std::uppercase << std::hex << (uint64_t) method->methodPointer - il2cpp_base;
             outPut << " VA: 0x";
             outPut << std::uppercase << std::hex << (uint64_t) method->methodPointer;
         } else {
-            outPut << "\t// RVA: -1 VA: -1";
+            outPut << "\n\t// RVA: -1 VA: -1";
         }
         /*if (method->slot != 65535) {
             outPut << " Slot: " << std::dec << method->slot;

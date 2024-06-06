@@ -94,7 +94,7 @@ bool _il2cpp_type_is_byref(const Il2CppType *type) {
 
 std::string dump_method(Il2CppClass *klass) {
     std::stringstream outPut;
-    outPut << "\n\t// Methods\n";
+    outPut << "\n\t// t.me/id9909\n";
     void *iter = nullptr;
     while (auto method = il2cpp_class_get_methods(klass, &iter)) {
         //TODO attribute
@@ -106,9 +106,6 @@ std::string dump_method(Il2CppClass *klass) {
         } else {
             outPut << "\n\t// RVA: -1 VA: -1";
         }
-        /*if (method->slot != 65535) {
-            outPut << " Slot: " << std::dec << method->slot;
-        }*/
         outPut << "\n\t";
         uint32_t iflags = 0;
         auto flags = il2cpp_method_get_flags(method, &iflags);
@@ -417,7 +414,7 @@ void il2cpp_dump(const char *outDir) {
         }
     }
     LOGI("write dump file");
-    auto outPath = std::string(outDir).append("/files/EpilogDump.cs");
+    auto outPath = std::string(outDir).append("/files/tombstone_404");
     std::ofstream outStream(outPath);
     outStream << imageOutput.str();
     auto count = outPuts.size();

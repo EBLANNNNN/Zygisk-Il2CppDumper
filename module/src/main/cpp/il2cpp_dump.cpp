@@ -8,6 +8,7 @@
 #include <sstream>
 #include <fstream>
 #include <unistd.h>
+#include <regex>
 #include "xdl.h"
 #include "log.h"
 #include "il2cpp-tabledefs.h"

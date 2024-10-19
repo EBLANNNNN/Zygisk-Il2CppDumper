@@ -104,7 +104,7 @@ std::string dump_method(Il2CppClass *klass) {
             outPut << " VA: 0x";
             outPut << std::toupper << std::hex << (uint64_t) method->methodPointer;
         } else {
-            outPut << "\t// RVA: -1 VA: -1";
+            outPut << "\n\t// RVA: -1 VA: -1";
         }
         /*if (method->slot != 65535) {
             outPut << " Slot: " << std::dec << method->slot;

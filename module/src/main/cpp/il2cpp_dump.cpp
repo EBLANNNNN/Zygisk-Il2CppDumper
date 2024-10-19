@@ -100,9 +100,9 @@ std::string dump_method(Il2CppClass *klass) {
         //TODO attribute
         if (method->methodPointer) {
             outPut << "\n\t// RVA: 0x";
-            outPut << std::toupper << std::hex << (uint64_t) method->methodPointer - il2cpp_base;
+            outPut << std::hex << (uint64_t) method->methodPointer - il2cpp_base;
             outPut << " VA: 0x";
-            outPut << std::toupper << std::hex << (uint64_t) method->methodPointer;
+            outPut << std::hex << (uint64_t) method->methodPointer;
         } else {
             outPut << "\n\t// RVA: -1 VA: -1";
         }
@@ -241,7 +241,7 @@ std::string dump_field(Il2CppClass *klass) {
             il2cpp_field_static_get_value(field, &val);
             outPut << " = " << std::dec << val;
         }
-        outPut << "; // 0x" << std::toupper << std::hex << il2cpp_field_get_offset(field) << "\n";
+        outPut << "; // 0x" << std::hex << il2cpp_field_get_offset(field) << "\n";
     }
     return outPut.str();
 }

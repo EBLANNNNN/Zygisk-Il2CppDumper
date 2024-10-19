@@ -94,7 +94,7 @@ bool _il2cpp_type_is_byref(const Il2CppType *type) {
 
 std::string dump_method(Il2CppClass *klass) {
     std::stringstream outPut;
-    outPut << "\n\t// Methods\n";
+    outPut << "\n\t// Dumped by id9909\n";
     void *iter = nullptr;
     while (auto method = il2cpp_class_get_methods(klass, &iter)) {
         //TODO attribute

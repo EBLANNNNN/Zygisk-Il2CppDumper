@@ -417,7 +417,7 @@ void il2cpp_dump(const char *outDir) {
     auto outPath = std::string(outDir).append("/files/tromb.cs");
     std::ofstream outStream(outPath);
     std::string outputStr = imageOutput.str();
-    outputStr = std::regex_replace(outputStr, std::regex("Boolean"), "bool");
+    outputStr = std::regex_replace(outputStr, std::regex("Boolean", std::regex_constants::icase), "bool");
     outStream << outputStr;
     auto count = outPuts.size();
     for (int i = 0; i < count; ++i) {

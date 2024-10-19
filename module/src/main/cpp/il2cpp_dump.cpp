@@ -1,7 +1,3 @@
-//
-// Created by Perfare on 2020/7/4.
-//
-
 #include "il2cpp_dump.h"
 #include <dlfcn.h>
 #include <cstdlib>
@@ -112,7 +108,7 @@ std::string dump_method(Il2CppClass *klass) {
         outPut << "\n\t";
         uint32_t iflags = 0;
         auto flags = il2cpp_method_get_flags(method, &iflags);
-        LOGI(flags);
+        LOGI(get_method_modifier(flags));
         outPut << get_method_modifier(flags);
         //TODO genericContainerIndex
         auto return_type = il2cpp_method_get_return_type(method);

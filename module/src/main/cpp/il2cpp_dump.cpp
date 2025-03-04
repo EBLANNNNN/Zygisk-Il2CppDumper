@@ -34,6 +34,29 @@ void init_il2cpp_api(void *handle) {
 #undef DO_API
 }
 
+const std::unordered_map<std::string, std::string> cs_to_cpp_types = {
+    {"Boolean", "bool"},
+    {"Byte", "byte"},
+    {"SByte", "sbyte"},
+    {"Int16", "short"},
+    {"UInt16", "ushort"},
+    {"Int32", "int"},
+    {"UInt32", "uint"},
+    {"Int64", "long"},
+    {"UInt64", "ulong"},
+    {"Single", "float"},
+    {"Double", "double"},
+    {"Char", "char"},
+    {"String", "string"},
+    {"Object", "object"},
+    {"Void", "void"}
+};
+
+std::string get_cpp_type(const std::string& cs_type) {
+    auto it = cs_to_cpp_types.find(cs_type);
+    return (it != cs_to_cpp_types.end()) ? it->second : cs_type;
+}
+
 std::string get_method_modifier(uint32_t flags) {
     std::stringstream outPut;
     auto access = flags & METHOD_ATTRIBUTE_MEMBER_ACCESS_MASK;
@@ -115,8 +138,7 @@ std::string dump_method(Il2CppClass *klass) {
             outPut << "ref ";
         }
         auto return_class = il2cpp_class_from_type(return_type);
-        outPut << il2cpp_class_get_name(return_class) << " " << il2cpp_method_get_name(method)
-               << "(";
+        outPut << get_cpp_type(il2cpp_class_get_name(return_class)) << " " << il2cpp_method_get_name(method) << "(";
         auto param_count = il2cpp_method_get_param_count(method);
         for (int i = 0; i < param_count; ++i) {
             auto param = il2cpp_method_get_param(method, i);
@@ -230,7 +252,7 @@ std::string dump_field(Il2CppClass *klass) {
         }
         auto field_type = il2cpp_field_get_type(field);
         auto field_class = il2cpp_class_from_type(field_type);
-        outPut << il2cpp_class_get_name(field_class) << " " << il2cpp_field_get_name(field);
+        outPut << get_cpp_type(il2cpp_class_get_name(field_class)) << " " << il2cpp_field_get_name(field);
         //TODO 获取构造函数初始化后的字段值
         if (attrs & FIELD_ATTRIBUTE_LITERAL && is_enum) {
             uint64_t val = 0;

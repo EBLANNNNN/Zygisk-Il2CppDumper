@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cinttypes>
 #include <string>
+#include <unordered_map>
 #include <vector>
 #include <sstream>
 #include <fstream>

@@ -1,7 +1,3 @@
-//
-// Created by Perfare on 2020/7/4.
-//
-
 #include "il2cpp_dump.h"
 #include <dlfcn.h>
 #include <cstdlib>
@@ -99,12 +95,12 @@ std::string dump_method(Il2CppClass *klass) {
     while (auto method = il2cpp_class_get_methods(klass, &iter)) {
         //TODO attribute
         if (method->methodPointer) {
-            outPut << "\t// RVA: 0x";
+            outPut << "\n\t// RVA: 0x";
             outPut << std::hex << (uint64_t) method->methodPointer - il2cpp_base;
             outPut << " VA: 0x";
             outPut << std::hex << (uint64_t) method->methodPointer;
         } else {
-            outPut << "\t// RVA: 0x VA: 0x0";
+            outPut << "\n\t// RVA: -1 VA: -1";
         }
         /*if (method->slot != 65535) {
             outPut << " Slot: " << std::dec << method->slot;
@@ -417,7 +413,7 @@ void il2cpp_dump(const char *outDir) {
         }
     }
     LOGI("write dump file");
-    auto outPath = std::string(outDir).append("/files/dump.cs");
+    auto outPath = std::string(outDir).append("/files/#dayn_damр");
     std::ofstream outStream(outPath);
     outStream << imageOutput.str();
     auto count = outPuts.size();

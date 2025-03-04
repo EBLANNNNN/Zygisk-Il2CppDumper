@@ -161,7 +161,7 @@ std::string dump_method(Il2CppClass *klass) {
                 }
             }
             auto parameter_class = il2cpp_class_from_type(param);
-            outPut << il2cpp_class_get_name(parameter_class) << " "
+            outPut << get_cpp_type(il2cpp_class_get_name(parameter_class)) << " "
                    << il2cpp_method_get_param_name(method, i);
             outPut << ", ";
         }
@@ -196,7 +196,7 @@ std::string dump_property(Il2CppClass *klass) {
             prop_class = il2cpp_class_from_type(param);
         }
         if (prop_class) {
-            outPut << il2cpp_class_get_name(prop_class) << " " << prop_name << " { ";
+            outPut << get_cpp_type(il2cpp_class_get_name(prop_class)) << " " << prop_name << " { ";
             if (get) {
                 outPut << "get; ";
             }

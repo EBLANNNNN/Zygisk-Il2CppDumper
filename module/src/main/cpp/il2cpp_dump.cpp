@@ -37,19 +37,33 @@ void init_il2cpp_api(void *handle) {
 
 const std::unordered_map<std::string, std::string> cs_to_cpp_types = {
     {"Boolean", "bool"},
+    {"Boolean[]", "bool[]"},
     {"Byte", "byte"},
+    {"Byte[]", "byte[]"},
     {"SByte", "sbyte"},
+    {"SByte[]", "sbyte[]"},
     {"Int16", "short"},
+    {"Int16[]", "short[]"},
     {"UInt16", "ushort"},
+    {"UInt16[]", "ushort[]"},
     {"Int32", "int"},
+    {"Int32[]", "int[]"},
     {"UInt32", "uint"},
+    {"UInt32[]", "uint[]"},
     {"Int64", "long"},
+    {"Int64[]", "long[]"},
     {"UInt64", "ulong"},
+    {"UInt64[]", "ulong[]"},
     {"Single", "float"},
+    {"Single[]", "float[]"},
     {"Double", "double"},
+    {"Double[]", "double[]"},
     {"Char", "char"},
+    {"Char[]", "char[]"},
     {"String", "string"},
+    {"String[]", "string[]"},
     {"Object", "object"},
+    {"Object[]", "object[]"},
     {"Void", "void"}
 };
 
